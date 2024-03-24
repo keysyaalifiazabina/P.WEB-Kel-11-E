@@ -1,17 +1,19 @@
 meng = document.querySelector('.meng');
 pipa = document.querySelector('.pipa');
 grass = document.querySelector('.grass');
-textStart = document.querySelector('text-start')
-floor1 = document.querySelector('.floor-1')
-floor2 = document.querySelector('.floor-2')
-floor3 = document.querySelector('.floor-3')
-let score=0;
+musuh = document.querySelector('.musuh');
+audioStart = new Audio('./audio/tema.mp3')
+textStart = document.querySelector('text-start');
+floor1 = document.querySelector('.floor-1');
+floor2 = document.querySelector('.floor-2');
+floor3 = document.querySelector('.floor-3');
 //Game Start//
 const start = () => {
 
     document.getElementById("text-start").style.color = "rgb(236, 236, 236)";
 
     pipa.classList.add('pipa-animation');
+    musuh.classList.add('musuh-animation');
 
     meng.src = './img/meng2.gif';
     meng.style.width = '100px';
@@ -32,6 +34,7 @@ const start = () => {
     function floorAnimation3(){
         floor3.classList.add('floor-animation-3');
             }setInterval(floorAnimation3, 3100); 
+    audioStart.play();
 }
 
 document.addEventListener('keydown', start);
@@ -42,19 +45,15 @@ const jump = () => {
 
     setTimeout(() => {
         meng.classList.remove('jump');
-    }, 1500); 
+    }, 1300); 
 }
 document.addEventListener('keydown', jump);
-
-function increaseScore() {
-    score++;
-    scoreText.textContent = 'Skor: ' + score;
-  }
 
 //Game Over//
 const checkGameOver = setInterval(() => {
     const pipaPosition = pipa.offsetLeft;
     const mengPosition = +window.getComputedStyle(meng).bottom.replace('px', '');
+    const musuhPosition = musuh.offsetLeft;
     const grassPosition = grass.offsetLeft;
     const floorPosition1 = floor1.offsetLeft;
     const floorPosition2 = floor2.offsetLeft;
@@ -68,9 +67,8 @@ const checkGameOver = setInterval(() => {
             meng.style.animation = 'none';
             meng.style.bottom = `${mengPosition}px`;
 
-            meng.src = './img/Meng stop.png';
-            meng.style.width = '75px';
-            meng.style.marginLeft = '50px';
+            musuh.style.animation='none';
+            musuh.style.left= `${musuhPosition}px`;
 
             grass.style.animation = 'none';
             grass.style.left = `${grassPosition}px`;
@@ -84,10 +82,35 @@ const checkGameOver = setInterval(() => {
             floor3.style.animation = 'none';
             floor3.style.left = `${floorPosition3}px`;
 
-            document.getElementById("text-start").style.color = "black";
             alert("Game Over");
-            document.getElementById("text-start").innerHTML="<strong>GAME OVER</strong>";
             clearInterval(checkGameOver);
-            document.location.reload()
+            document.location.reload();
+        }
+        if (musuhPosition <= 100 && musuhPosition > 0 && mengPosition < 50 ) {
+
+            pipa.style.animation = 'none';
+            pipa.style.left = `${pipaPosition}px`;
+
+            meng.style.animation = 'none';
+            meng.style.bottom = `${mengPosition}px`;
+
+            musuh.style.animation='none';
+            musuh.style.left= `${musuhPosition}px`;
+
+            grass.style.animation = 'none';
+            grass.style.left = `${grassPosition}px`;
+
+            floor1.style.animation = 'none';
+            floor1.style.left = `${floorPosition1}px`;
+
+            floor2.style.animation = 'none';
+            floor2.style.left = `${floorPosition2}px`;
+
+            floor3.style.animation = 'none';
+            floor3.style.left = `${floorPosition3}px`;
+
+            alert("Game Over");
+            clearInterval(checkGameOver);
+            document.location.reload();
         }
 }, 10);
