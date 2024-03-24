@@ -2,7 +2,7 @@ meng = document.querySelector('.meng');
 pipa = document.querySelector('.pipa');
 grass = document.querySelector('.grass');
 musuh = document.querySelector('.musuh');
-audioStart = new Audio('./audio/tema.mp3')
+audioStart = new Audio('tema.mp3')
 textStart = document.querySelector('text-start');
 floor1 = document.querySelector('.floor-1');
 floor2 = document.querySelector('.floor-2');
@@ -15,7 +15,7 @@ const start = () => {
     pipa.classList.add('pipa-animation');
     musuh.classList.add('musuh-animation');
 
-    meng.src = './img/meng2.gif';
+    meng.src = 'meng2.gif';
     meng.style.width = '100px';
     meng.style.marginLeft = '50px';
 
