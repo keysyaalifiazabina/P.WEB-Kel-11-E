@@ -11,6 +11,7 @@ floor3 = document.querySelector('.floor-3');
 const start = () => {
 
     document.getElementById("text-start").style.color = "rgb(236, 236, 236)";
+    updateScore();
 
     pipa.classList.add('pipa-animation');
     musuh.classList.add('musuh-animation');
@@ -86,6 +87,9 @@ const checkGameOver = setInterval(() => {
             clearInterval(checkGameOver);
             document.location.reload();
         }
+        if (pipaPosition < 120 && pipaPosition > 0 && mengPosition >= 80) {
+            updateScore();
+        }
         if (musuhPosition <= 100 && musuhPosition > 0 && mengPosition < 50 ) {
 
             pipa.style.animation = 'none';
@@ -113,4 +117,20 @@ const checkGameOver = setInterval(() => {
             clearInterval(checkGameOver);
             document.location.reload();
         }
+        if (musuhPosition < 120 && pipaPosition > 0 && mengPosition >= 80) {
+            updateScore();
+        }
+        function updateScore(rintangan) {
+            if (rintangan === 'pipa') {
+                score+=1;
+        
+            } else if (rintangan === 'musuh') {
+                score+=2;
+            }
+        }
 }, 10);
+let score = 0;
+function updateScore() {
+    score++;
+document.getElementById('score').innerText = 'Skor: ' + score;
+}
