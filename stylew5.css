@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    background-image: url(https://is2-ssl.mzstatic.com/image/thumb/Purple49/v4/38/40/fa/3840fa9c-be04-6fab-3835-80da186e0587/pr_source.png/750x750bb.jpeg);
+}
+header {
+    background-color: #ebdada;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+h3{
+    color: #555;
+    font-size: 16px;
+}
+p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+}
+.game-flow {
+    margin-top: 30px;
+}
+.game-flow img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
